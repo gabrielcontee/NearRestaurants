@@ -11,7 +11,7 @@ class LocationManager: NSObject {
     
     let locationManager = CLLocationManager()
     
-    var locationFetched: ((FoursquareCoordinate) -> Void)?
+    var locationUpdate: ((FoursquareCoordinate) -> Void)?
     
     override init() {
         super.init()
@@ -37,18 +37,18 @@ extension LocationManager: CLLocationManagerDelegate {
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-    }
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let location = locations.first else { return }
         
         let coordinate = FoursquareCoordinate(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        if let onLocationFix = locationFetched {
-            onLocationFix(coordinate)
+        if let locationUpdate = locationUpdate {
+            locationUpdate(coordinate)
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
 }
 
