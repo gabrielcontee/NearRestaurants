@@ -6,9 +6,18 @@
 //
 
 import UIKit
+import MapKit
 
-class RestaurantsMapViewController: UIViewController {
-
+protocol RestaurantsMapDisplayLogic {
     
-
 }
+
+class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLogic {
+    
+    var interactor: RestaurantsMapBusinessLogic?
+    var router: RestaurantsMapRoutingLogic?
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
+}
+  

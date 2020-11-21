@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RestaurantsMapViewController" customModule="NearRestaurants" customModuleProvider="target">
             <connections>
+                <outlet property="mapView" destination="RIp-y7-gso" id="lZd-dt-t3m"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,9 +18,20 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RIp-y7-gso">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </mapView>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="97" y="92"/>
+            <constraints>
+                <constraint firstItem="RIp-y7-gso" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4Us-cp-SG5"/>
+                <constraint firstItem="RIp-y7-gso" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Jfx-gv-VlY"/>
+                <constraint firstItem="RIp-y7-gso" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="PEV-I2-MZF"/>
+                <constraint firstAttribute="bottom" secondItem="RIp-y7-gso" secondAttribute="bottom" id="ULd-Nw-CPV"/>
+            </constraints>
+            <point key="canvasLocation" x="95.652173913043484" y="91.741071428571431"/>
         </view>
     </objects>
     <resources>
