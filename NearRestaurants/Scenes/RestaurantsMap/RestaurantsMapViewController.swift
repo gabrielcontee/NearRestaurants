@@ -26,15 +26,11 @@ class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLog
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        setupMap()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.prefersLargeTitles = false
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupMap()
     }
     
     private func setupMap() {
@@ -54,7 +50,7 @@ class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLog
     }
     
     func displayErrorPopup(viewModel: RestaurantsMap.Venues.ErrorViewModel) {
-        // TO DO: display error pop up
+        self.presentAlert(title: "Oops, we had a problem", message: viewModel.errorDescription)
     }
     
     func displayVenueDetails(viewModel: RestaurantsMap.GetVenueDetail.ViewModel) {
