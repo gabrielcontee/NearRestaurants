@@ -9,9 +9,9 @@ import UIKit
 import MapKit
 
 protocol RestaurantsMapDisplayLogic {
-    func displayRestaurants(venues: [FoursquareVenue])
-    func displayErrorPopup(with title: String)
-    func displayVenueDetails(venue: FoursquareVenue)
+    func displayRestaurants(viewModel: RestaurantsMap.Venues.ViewModel)
+    func displayErrorPopup(viewModel: RestaurantsMap.Venues.ErrorViewModel)
+    func displayVenueDetails(viewModel: RestaurantsMap.GetVenueDetail.ViewModel)
 }
 
 class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLogic {
@@ -39,20 +39,21 @@ class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLog
         }
         let latitude = lastKnowLocation.latitude
         let longitude = lastKnowLocation.longitude
-        interactor?.fetchRestaurants(latitude: latitude, longitude: longitude)
+        let venueRequest = RestaurantsMap.Venues.Request(latitude: latitude, longitude: longitude)
+        interactor?.fetchRestaurants(request: venueRequest)
         setMapRegion(latitude: latitude, longitude: longitude)
     }
     
-    func displayRestaurants(venues: [FoursquareVenue]) {
-        addMapAnnotations(for: venues)
+    func displayRestaurants(viewModel: RestaurantsMap.Venues.ViewModel) {
+        addMapAnnotations(for: viewModel.restaurants)
     }
     
-    func displayErrorPopup(with title: String) {
+    func displayErrorPopup(viewModel: RestaurantsMap.Venues.ErrorViewModel) {
         // TO DO: display error pop up
     }
     
-    func displayVenueDetails(venue: FoursquareVenue) {
-        router?.routeToDetails(venue)
+    func displayVenueDetails(viewModel: RestaurantsMap.GetVenueDetail.ViewModel) {
+        router?.routeToDetails(viewModel.venueInfo)
     }
 }
 
@@ -81,7 +82,8 @@ extension RestaurantsMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let centerCoordinateViewed = mapView.region.center
-        interactor?.fetchRestaurants(latitude: centerCoordinateViewed.latitude, longitude: centerCoordinateViewed.longitude)
+        let venueRequest = RestaurantsMap.Venues.Request(latitude: centerCoordinateViewed.latitude, longitude: centerCoordinateViewed.longitude)
+        interactor?.fetchRestaurants(request: venueRequest)
     }
     
     func setMapRegion(latitude: Double, longitude: Double) {
@@ -97,6 +99,7 @@ extension RestaurantsMapViewController: MKMapViewDelegate {
         guard let annotationView = view.annotation as? MKPointAnnotation else {
             return
         }
-        interactor?.handleVenueSelection(title: annotationView.title)
+        let request = RestaurantsMap.GetVenueDetail.Request(venueName: annotationView.title)
+        interactor?.handleVenueSelection(request: request)
     }
 }

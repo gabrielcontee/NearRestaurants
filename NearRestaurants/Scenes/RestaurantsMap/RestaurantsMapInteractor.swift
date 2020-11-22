@@ -8,8 +8,8 @@
 import Foundation
 
 protocol RestaurantsMapBusinessLogic {
-    func fetchRestaurants(latitude: Double, longitude: Double)
-    func handleVenueSelection(title: String?)
+    func fetchRestaurants(request: RestaurantsMap.Venues.Request)
+    func handleVenueSelection(request: RestaurantsMap.GetVenueDetail.Request)
 }
 
 class RestaurantsMapInteractor: RestaurantsMapBusinessLogic {
@@ -19,25 +19,28 @@ class RestaurantsMapInteractor: RestaurantsMapBusinessLogic {
     
     private var foodVenues: [FoursquareVenue] = []
     
-    func fetchRestaurants(latitude: Double, longitude: Double) {
-        let coordinate = FoursquareCoordinate(latitude: latitude, longitude: longitude)
+    func fetchRestaurants(request: RestaurantsMap.Venues.Request) {
+        let coordinate = FoursquareCoordinate(latitude: request.latitude, longitude: request.longitude)
         self.worker?.fetchCloseRestaurants(for: coordinate, category: .food) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let venues):
                 self.foodVenues = venues
-                self.presenter?.presentRestaurants(venues: venues)
+                let response = RestaurantsMap.Venues.Response(restaurants: venues)
+                self.presenter?.presentRestaurants(response: response)
             case .failure(let error):
-                self.presenter?.presentError(description: error.localizedDescription)
+                let response = RestaurantsMap.Venues.Response(restaurants: [], errorMessage: error)
+                self.presenter?.presentError(response: response)
             }
         }
     }
     
-    func handleVenueSelection(title: String?) {
-        guard let name = title,
+    func handleVenueSelection(request: RestaurantsMap.GetVenueDetail.Request) {
+        guard let name = request.venueName,
               let venueInfo = foodVenues.first(where: { $0.name == name }) else {
             return
         }
-        presenter?.presentDetails(of: venueInfo)
+        let response = RestaurantsMap.GetVenueDetail.Response(venueInfo: venueInfo)
+        presenter?.presentDetails(response: response)
     }
 }
