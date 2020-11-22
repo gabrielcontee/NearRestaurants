@@ -28,6 +28,7 @@ class RestaurantsMapRouter: RestaurantsMapRoutingLogic, RestaurantsMapDataPassin
             return
         }
         passDataToDetails(source: mapsDataStore, destination: &detailsDS)
+        detailsViewController.title = mapsDataStore.chosenVenue?.name
         viewController?.navigationController?.pushViewController(detailsViewController, animated: true)
     }
     

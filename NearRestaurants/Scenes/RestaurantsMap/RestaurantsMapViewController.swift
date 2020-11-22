@@ -28,12 +28,17 @@ class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLog
         mapView.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupMap()
     }
     
     private func setupMap() {
+        self.title = "Restaurants Finder"
         guard let lastKnowLocation = locationManager.lastKnownLocation else {
             return
         }

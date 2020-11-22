@@ -16,5 +16,7 @@ class RestaurantsDetailsViewController: BaseViewController, RestaurantsDetailsDi
     var router: RestaurantsDetailsDataPassing?
     var interactor: RestaurantsDetailsBusinessLogic?
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
 }
