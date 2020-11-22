@@ -33,6 +33,16 @@
 		DECC15342569805D0073512F /* RestaurantsMapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC152F2569805D0073512F /* RestaurantsMapRouter.swift */; };
 		DECC153A256981E30073512F /* ConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC1539256981E30073512F /* ConfiguratorProtocol.swift */; };
 		DECC153F256982130073512F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC153E256982130073512F /* BaseViewController.swift */; };
+		DECC1552256A93CC0073512F /* RestaurantsDetailsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC1551256A93CB0073512F /* RestaurantsDetailsConfigurator.swift */; };
+		DECC1557256A942C0073512F /* RestaurantsMapModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC1556256A942C0073512F /* RestaurantsMapModels.swift */; };
+		DECC155C256A9D4A0073512F /* RestaurantsDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC155B256A9D4A0073512F /* RestaurantsDetailsInteractor.swift */; };
+		DECC1561256A9D540073512F /* RestaurantsDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC1560256A9D540073512F /* RestaurantsDetailsPresenter.swift */; };
+		DECC1566256AA28E0073512F /* RestaurantsDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC1565256AA28E0073512F /* RestaurantsDetailsRouter.swift */; };
+		DECC156B256AAFA70073512F /* RestaurantsDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC156A256AAFA70073512F /* RestaurantsDetailsModels.swift */; };
+		DECC1571256AB2300073512F /* VenueDetailsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC1570256AB2300073512F /* VenueDetailsCellModel.swift */; };
+		DECC157A256ABC530073512F /* VenueDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC1578256ABC530073512F /* VenueDetailsTableViewCell.swift */; };
+		DECC157B256ABC530073512F /* VenueDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECC1579256ABC530073512F /* VenueDetailsTableViewCell.xib */; };
+		DECC1584256AE58A0073512F /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC1583256AE5890073512F /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +95,16 @@
 		DECC152F2569805D0073512F /* RestaurantsMapRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsMapRouter.swift; sourceTree = "<group>"; };
 		DECC1539256981E30073512F /* ConfiguratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguratorProtocol.swift; sourceTree = "<group>"; };
 		DECC153E256982130073512F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		DECC1551256A93CB0073512F /* RestaurantsDetailsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsDetailsConfigurator.swift; sourceTree = "<group>"; };
+		DECC1556256A942C0073512F /* RestaurantsMapModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsMapModels.swift; sourceTree = "<group>"; };
+		DECC155B256A9D4A0073512F /* RestaurantsDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsDetailsInteractor.swift; sourceTree = "<group>"; };
+		DECC1560256A9D540073512F /* RestaurantsDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsDetailsPresenter.swift; sourceTree = "<group>"; };
+		DECC1565256AA28E0073512F /* RestaurantsDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsDetailsRouter.swift; sourceTree = "<group>"; };
+		DECC156A256AAFA70073512F /* RestaurantsDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsDetailsModels.swift; sourceTree = "<group>"; };
+		DECC1570256AB2300073512F /* VenueDetailsCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueDetailsCellModel.swift; sourceTree = "<group>"; };
+		DECC1578256ABC530073512F /* VenueDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		DECC1579256ABC530073512F /* VenueDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VenueDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		DECC1583256AE5890073512F /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,9 +155,11 @@
 		DECC145D2569480B0073512F /* NearRestaurants */ = {
 			isa = PBXGroup;
 			children = (
+				DECC1582256AE5740073512F /* Extensions */,
 				DECC14F3256955280073512F /* Models */,
 				DECC14D7256951030073512F /* APIConfig */,
 				DECC14A125694E970073512F /* Scenes */,
+				DECC14ED256953600073512F /* Models */,
 				DECC1538256981400073512F /* CleanSwift */,
 				DECC14B125694F6F0073512F /* Support Files */,
 				DECC146C2569480E0073512F /* Info.plist */,
@@ -175,7 +197,6 @@
 		DECC14A225694E9F0073512F /* RestaurantsMap */ = {
 			isa = PBXGroup;
 			children = (
-				DECC14ED256953600073512F /* Models */,
 				DECC152B2569805C0073512F /* RestaurantsMapConfigurator.swift */,
 				DECC152C2569805C0073512F /* RestaurantsMapInteractor.swift */,
 				DECC152E2569805C0073512F /* RestaurantsMapPresenter.swift */,
@@ -183,6 +204,7 @@
 				DECC152D2569805C0073512F /* RestaurantsMapWorker.swift */,
 				DECC149725694D850073512F /* RestaurantsMapViewController.swift */,
 				DECC149825694D850073512F /* RestaurantsMapViewController.xib */,
+				DECC1556256A942C0073512F /* RestaurantsMapModels.swift */,
 			);
 			path = RestaurantsMap;
 			sourceTree = "<group>";
@@ -190,8 +212,14 @@
 		DECC14A925694EF90073512F /* RestaurantsDetails */ = {
 			isa = PBXGroup;
 			children = (
+				DECC156F256AB21E0073512F /* Cell */,
 				DECC14AB25694F2E0073512F /* RestaurantsDetailsViewController.xib */,
 				DECC14AA25694F2E0073512F /* RestaurantsDetailsViewController.swift */,
+				DECC1551256A93CB0073512F /* RestaurantsDetailsConfigurator.swift */,
+				DECC155B256A9D4A0073512F /* RestaurantsDetailsInteractor.swift */,
+				DECC1560256A9D540073512F /* RestaurantsDetailsPresenter.swift */,
+				DECC1565256AA28E0073512F /* RestaurantsDetailsRouter.swift */,
+				DECC156A256AAFA70073512F /* RestaurantsDetailsModels.swift */,
 			);
 			path = RestaurantsDetails;
 			sourceTree = "<group>";
@@ -224,7 +252,8 @@
 			children = (
 				DECC14EE2569536D0073512F /* RestaurantLocation.swift */,
 			);
-			path = Models;
+			name = Models;
+			path = Scenes/RestaurantsMap/Models;
 			sourceTree = "<group>";
 		};
 		DECC14F3256955280073512F /* Models */ = {
@@ -252,6 +281,24 @@
 				DECC153E256982130073512F /* BaseViewController.swift */,
 			);
 			path = CleanSwift;
+			sourceTree = "<group>";
+		};
+		DECC156F256AB21E0073512F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DECC1579256ABC530073512F /* VenueDetailsTableViewCell.xib */,
+				DECC1578256ABC530073512F /* VenueDetailsTableViewCell.swift */,
+				DECC1570256AB2300073512F /* VenueDetailsCellModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DECC1582256AE5740073512F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DECC1583256AE5890073512F /* UIViewControllerExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +407,7 @@
 				DECC146B2569480E0073512F /* LaunchScreen.storyboard in Resources */,
 				DECC149A25694D850073512F /* RestaurantsMapViewController.xib in Resources */,
 				DECC14AD25694F2E0073512F /* RestaurantsDetailsViewController.xib in Resources */,
+				DECC157B256ABC530073512F /* VenueDetailsTableViewCell.xib in Resources */,
 				DECC14682569480E0073512F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,24 +434,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				DECC15302569805D0073512F /* RestaurantsMapConfigurator.swift in Sources */,
+				DECC1557256A942C0073512F /* RestaurantsMapModels.swift in Sources */,
+				DECC1566256AA28E0073512F /* RestaurantsDetailsRouter.swift in Sources */,
+				DECC1571256AB2300073512F /* VenueDetailsCellModel.swift in Sources */,
 				DECC145F2569480B0073512F /* AppDelegate.swift in Sources */,
 				DECC150D2569587C0073512F /* FoursquareAPI.swift in Sources */,
 				DECC14D9256951790073512F /* FoursquareClient.swift in Sources */,
 				DECC15312569805D0073512F /* RestaurantsMapInteractor.swift in Sources */,
 				DECC153F256982130073512F /* BaseViewController.swift in Sources */,
 				DECC14EF2569536D0073512F /* RestaurantLocation.swift in Sources */,
+				DECC1584256AE58A0073512F /* UIViewControllerExtension.swift in Sources */,
 				DECC151625695F680073512F /* Keys.swift in Sources */,
 				DECC14FD256955960073512F /* FoursquareVenue.swift in Sources */,
 				DECC14F52569557A0073512F /* FoursquareLocation.swift in Sources */,
 				DECC15322569805D0073512F /* RestaurantsMapWorker.swift in Sources */,
 				DECC153A256981E30073512F /* ConfiguratorProtocol.swift in Sources */,
 				DECC14E1256951BB0073512F /* APIClient.swift in Sources */,
+				DECC155C256A9D4A0073512F /* RestaurantsDetailsInteractor.swift in Sources */,
 				DECC14612569480B0073512F /* SceneDelegate.swift in Sources */,
 				DECC15342569805D0073512F /* RestaurantsMapRouter.swift in Sources */,
 				DECC15332569805D0073512F /* RestaurantsMapPresenter.swift in Sources */,
+				DECC1561256A9D540073512F /* RestaurantsDetailsPresenter.swift in Sources */,
 				DECC1505256955FD0073512F /* FoursquareCoordinate.swift in Sources */,
 				DECC14E6256951D30073512F /* LocationManager.swift in Sources */,
 				DECC14AC25694F2E0073512F /* RestaurantsDetailsViewController.swift in Sources */,
+				DECC156B256AAFA70073512F /* RestaurantsDetailsModels.swift in Sources */,
+				DECC1552256A93CC0073512F /* RestaurantsDetailsConfigurator.swift in Sources */,
+				DECC157A256ABC530073512F /* VenueDetailsTableViewCell.swift in Sources */,
 				DECC149925694D850073512F /* RestaurantsMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

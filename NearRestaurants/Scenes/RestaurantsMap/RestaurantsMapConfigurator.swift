@@ -26,5 +26,6 @@ class RestaurantsMapConfigurator: ConfiguratorProtocol {
         interactor.worker = worker
         presenter.viewController = vc
         router.viewController = vc
+        router.dataStore = interactor
     }
 }

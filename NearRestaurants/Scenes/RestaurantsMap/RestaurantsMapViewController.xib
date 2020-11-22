@@ -20,14 +20,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RIp-y7-gso">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                 </mapView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="RIp-y7-gso" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4Us-cp-SG5"/>
-                <constraint firstItem="RIp-y7-gso" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Jfx-gv-VlY"/>
+                <constraint firstItem="RIp-y7-gso" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Jtt-Gu-aJY"/>
                 <constraint firstItem="RIp-y7-gso" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="PEV-I2-MZF"/>
                 <constraint firstAttribute="bottom" secondItem="RIp-y7-gso" secondAttribute="bottom" id="ULd-Nw-CPV"/>
             </constraints>

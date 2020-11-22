@@ -9,8 +9,9 @@ import UIKit
 import MapKit
 
 protocol RestaurantsMapDisplayLogic {
-    func displayRestaurants(venues: [FoursquareVenue])
-    func displayErrorPopup(with title: String)
+    func displayRestaurants(viewModel: RestaurantsMap.Venues.ViewModel)
+    func displayErrorPopup(viewModel: RestaurantsMap.Venues.ErrorViewModel)
+    func displayVenueDetails(viewModel: RestaurantsMap.GetVenueDetail.ViewModel)
 }
 
 class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLogic {
@@ -18,38 +19,42 @@ class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLog
     @IBOutlet weak var mapView: MKMapView!
     
     var interactor: RestaurantsMapBusinessLogic?
-    var router: RestaurantsMapRoutingLogic?
+    var router: (RestaurantsMapRoutingLogic & RestaurantsMapDataPassing)?
     var coordinate: FoursquareCoordinate?
     var locationManager = LocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         setupMap()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     private func setupMap() {
+        self.title = "Restaurants Finder"
         guard let lastKnowLocation = locationManager.lastKnownLocation else {
             return
         }
         let latitude = lastKnowLocation.latitude
         let longitude = lastKnowLocation.longitude
-        interactor?.fetchRestaurants(latitude: latitude, longitude: longitude)
+        let venueRequest = RestaurantsMap.Venues.Request(latitude: latitude, longitude: longitude)
+        interactor?.fetchRestaurants(request: venueRequest)
         setMapRegion(latitude: latitude, longitude: longitude)
     }
     
-    
-    
-    func displayRestaurants(venues: [FoursquareVenue]) {
-        addMapAnnotations(for: venues)
+    func displayRestaurants(viewModel: RestaurantsMap.Venues.ViewModel) {
+        addMapAnnotations(for: viewModel.restaurants)
     }
     
-    func displayErrorPopup(with title: String) {
-        
+    func displayErrorPopup(viewModel: RestaurantsMap.Venues.ErrorViewModel) {
+        self.presentAlert(title: "Oops, we had a problem", message: viewModel.errorDescription)
+    }
+    
+    func displayVenueDetails(viewModel: RestaurantsMap.GetVenueDetail.ViewModel) {
+        router?.routeToDetails()
     }
 }
 
@@ -78,7 +83,8 @@ extension RestaurantsMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let centerCoordinateViewed = mapView.region.center
-        interactor?.fetchRestaurants(latitude: centerCoordinateViewed.latitude, longitude: centerCoordinateViewed.longitude)
+        let venueRequest = RestaurantsMap.Venues.Request(latitude: centerCoordinateViewed.latitude, longitude: centerCoordinateViewed.longitude)
+        interactor?.fetchRestaurants(request: venueRequest)
     }
     
     func setMapRegion(latitude: Double, longitude: Double) {
@@ -88,5 +94,13 @@ extension RestaurantsMapViewController: MKMapViewDelegate {
         var region = MKCoordinateRegion(center: coordinates, span: span)
         region.center = coordinates
         mapView.setRegion(region, animated: true)
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annotationView = view.annotation as? MKPointAnnotation else {
+            return
+        }
+        let request = RestaurantsMap.GetVenueDetail.Request(venueName: annotationView.title)
+        interactor?.handleVenueSelection(request: request)
     }
 }
