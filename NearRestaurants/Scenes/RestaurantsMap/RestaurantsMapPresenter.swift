@@ -10,6 +10,7 @@ import Foundation
 protocol RestaurantsMapPresentationLogic {
     func presentRestaurants(venues: [FoursquareVenue])
     func presentError(description: String)
+    func presentDetails(of venue: FoursquareVenue)
 }
 
 class RestaurantsMapPresenter: RestaurantsMapPresentationLogic {
@@ -26,6 +27,9 @@ class RestaurantsMapPresenter: RestaurantsMapPresentationLogic {
         } else {
             viewController?.displayErrorPopup(with: description)
         }
-        
+    }
+    
+    func presentDetails(of venue: FoursquareVenue) {
+        viewController?.displayVenueDetails(venue: venue)
     }
 }

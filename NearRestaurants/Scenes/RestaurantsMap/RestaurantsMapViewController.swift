@@ -11,6 +11,7 @@ import MapKit
 protocol RestaurantsMapDisplayLogic {
     func displayRestaurants(venues: [FoursquareVenue])
     func displayErrorPopup(with title: String)
+    func displayVenueDetails(venue: FoursquareVenue)
 }
 
 class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLogic {
@@ -42,14 +43,16 @@ class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLog
         setMapRegion(latitude: latitude, longitude: longitude)
     }
     
-    
-    
     func displayRestaurants(venues: [FoursquareVenue]) {
         addMapAnnotations(for: venues)
     }
     
     func displayErrorPopup(with title: String) {
-        
+        // TO DO: display error pop up
+    }
+    
+    func displayVenueDetails(venue: FoursquareVenue) {
+        router?.routeToDetails(venue)
     }
 }
 
@@ -88,5 +91,12 @@ extension RestaurantsMapViewController: MKMapViewDelegate {
         var region = MKCoordinateRegion(center: coordinates, span: span)
         region.center = coordinates
         mapView.setRegion(region, animated: true)
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annotationView = view.annotation as? MKPointAnnotation else {
+            return
+        }
+        interactor?.handleVenueSelection(title: annotationView.title)
     }
 }
