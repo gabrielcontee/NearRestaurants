@@ -9,9 +9,9 @@ import CoreLocation
 
 class LocationManager: NSObject {
     
-    let locationManager = CLLocationManager()
+    private let locationManager = CLLocationManager()
     
-    var locationUpdate: ((FoursquareCoordinate) -> Void)?
+    var lastKnownLocation: FoursquareCoordinate?
     
     override init() {
         super.init()
@@ -19,32 +19,33 @@ class LocationManager: NSObject {
     }
     
     private func setup() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.requestLocation()
-        
-        if locationManager.authorizationStatus == .notDetermined {
-            locationManager.requestWhenInUseAuthorization()
-        }
+        self.locationManager.delegate = self
+        requestLocationAuth()
+    }
+    
+    func requestLocationAuth() {
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        self.locationManager.requestLocation()
     }
 }
 
 extension LocationManager: CLLocationManagerDelegate {
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            manager.requestLocation()
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        let status = manager.authorizationStatus
+        if(status == .authorizedWhenInUse || status == .authorizedAlways){
+            locationManager.startUpdatingLocation()
+        }else{
+            requestLocationAuth()
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        guard let location = locations.first else { return }
+        guard let location = locations.last else { return }
         
         let coordinate = FoursquareCoordinate(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        if let locationUpdate = locationUpdate {
-            locationUpdate(coordinate)
-        }
+        lastKnownLocation = coordinate
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

@@ -10,6 +10,7 @@ import MapKit
 
 protocol RestaurantsMapDisplayLogic {
     func displayRestaurants(venues: [FoursquareVenue])
+    func displayErrorPopup(with title: String)
 }
 
 class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLogic {
@@ -19,15 +20,36 @@ class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLog
     var interactor: RestaurantsMapBusinessLogic?
     var router: RestaurantsMapRoutingLogic?
     var coordinate: FoursquareCoordinate?
+    var locationManager = LocationManager()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mapView.delegate = self
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        setMapRegion()
+        setupMap()
     }
+    
+    private func setupMap() {
+        guard let lastKnowLocation = locationManager.lastKnownLocation else {
+            return
+        }
+        let latitude = lastKnowLocation.latitude
+        let longitude = lastKnowLocation.longitude
+        interactor?.fetchRestaurants(latitude: latitude, longitude: longitude)
+        setMapRegion(latitude: latitude, longitude: longitude)
+    }
+    
+    
     
     func displayRestaurants(venues: [FoursquareVenue]) {
         addMapAnnotations(for: venues)
+    }
+    
+    func displayErrorPopup(with title: String) {
+        
     }
 }
 
@@ -54,20 +76,17 @@ extension RestaurantsMapViewController: MKMapViewDelegate {
         }
     }
     
-    func setMapRegion() {
-        var region = MKCoordinateRegion()
-        region.center = mapView.userLocation.coordinate
-        region.span.latitudeDelta = 0.05
-        region.span.longitudeDelta = 0.05
-        mapView.setRegion(region, animated: true)
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        let centerCoordinateViewed = mapView.region.center
+        interactor?.fetchRestaurants(latitude: centerCoordinateViewed.latitude, longitude: centerCoordinateViewed.longitude)
     }
-}
-
-extension RestaurantsMapViewController: UISearchResultsUpdating {
     
-    func updateSearchResults(for searchController: UISearchController) {
-        if let coordinates = coordinate {
-            interactor?.fetchRestaurants(latitude: coordinates.latitude, longitude: coordinates.longitude)
-        }
+    func setMapRegion(latitude: Double, longitude: Double) {
+        let zoomRange = 0.025
+        let coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let span = MKCoordinateSpan(latitudeDelta: zoomRange, longitudeDelta: zoomRange)
+        var region = MKCoordinateRegion(center: coordinates, span: span)
+        region.center = coordinates
+        mapView.setRegion(region, animated: true)
     }
 }

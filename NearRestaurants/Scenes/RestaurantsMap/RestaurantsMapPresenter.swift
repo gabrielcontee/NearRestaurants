@@ -17,10 +17,15 @@ class RestaurantsMapPresenter: RestaurantsMapPresentationLogic {
     var viewController: RestaurantsMapDisplayLogic?
     
     func presentRestaurants(venues: [FoursquareVenue]) {
-        
+        viewController?.displayRestaurants(venues: venues)
     }
     
     func presentError(description: String) {
+        if description == "" {
+            viewController?.displayErrorPopup(with: "Could not load the restaurants")
+        } else {
+            viewController?.displayErrorPopup(with: description)
+        }
         
     }
 }
