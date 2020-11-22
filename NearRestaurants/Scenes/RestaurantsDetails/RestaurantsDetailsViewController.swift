@@ -7,12 +7,14 @@
 
 import UIKit
 
-class RestaurantsDetailsViewController: UIViewController {
+protocol RestaurantsDetailsDisplayLogic {
+    
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class RestaurantsDetailsViewController: BaseViewController, RestaurantsDetailsDisplayLogic {
 
-    }
-
-
+    var router: RestaurantsDetailsDataPassing?
+    var interactor: RestaurantsDetailsBusinessLogic?
+    
+    
 }

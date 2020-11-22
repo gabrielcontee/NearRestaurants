@@ -19,7 +19,7 @@ class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLog
     @IBOutlet weak var mapView: MKMapView!
     
     var interactor: RestaurantsMapBusinessLogic?
-    var router: RestaurantsMapRoutingLogic?
+    var router: (RestaurantsMapRoutingLogic & RestaurantsMapDataPassing)?
     var coordinate: FoursquareCoordinate?
     var locationManager = LocationManager()
     
@@ -53,7 +53,7 @@ class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLog
     }
     
     func displayVenueDetails(viewModel: RestaurantsMap.GetVenueDetail.ViewModel) {
-        router?.routeToDetails(viewModel.venueInfo)
+        router?.routeToDetails()
     }
 }
 

@@ -12,12 +12,17 @@ protocol RestaurantsMapBusinessLogic {
     func handleVenueSelection(request: RestaurantsMap.GetVenueDetail.Request)
 }
 
-class RestaurantsMapInteractor: RestaurantsMapBusinessLogic {
+protocol RestaurantsMapDataStore {
+    var chosenVenue: FoursquareVenue? { get set }
+}
+
+class RestaurantsMapInteractor: RestaurantsMapBusinessLogic, RestaurantsMapDataStore {
     
     var presenter: RestaurantsMapPresentationLogic?
     var worker: RestaurantsMapWorkingLogic?
     
-    private var foodVenues: [FoursquareVenue] = []
+    var foodVenues: [FoursquareVenue] = []
+    var chosenVenue: FoursquareVenue?
     
     func fetchRestaurants(request: RestaurantsMap.Venues.Request) {
         let coordinate = FoursquareCoordinate(latitude: request.latitude, longitude: request.longitude)
@@ -36,10 +41,12 @@ class RestaurantsMapInteractor: RestaurantsMapBusinessLogic {
     }
     
     func handleVenueSelection(request: RestaurantsMap.GetVenueDetail.Request) {
+        chosenVenue = nil
         guard let name = request.venueName,
               let venueInfo = foodVenues.first(where: { $0.name == name }) else {
             return
         }
+        chosenVenue = venueInfo
         let response = RestaurantsMap.GetVenueDetail.Response(venueInfo: venueInfo)
         presenter?.presentDetails(response: response)
     }
