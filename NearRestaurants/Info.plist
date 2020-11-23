@@ -2,6 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>foursquareClientSecret</key>
+	<string>EFV0QSV4R0AWJYU5LPKCVADW12OSRTGK405HM4IM0IR5JUQN</string>
+	<key>foursquareClientId</key>
+	<string>XWYTYOC3EXKQOLBVEV50COHEL50ZIDQCXWGL2S3HVNSYXRQM</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To use the app, please give us your location information</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>To use the app, please give us your location information</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>To use the app, please give us your location information</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -33,8 +43,6 @@
 					<string>Default Configuration</string>
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
-					<key>UISceneStoryboardFile</key>
-					<string>Main</string>
 				</dict>
 			</array>
 		</dict>
@@ -43,8 +51,6 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
