@@ -9,8 +9,8 @@ import UIKit
 
 class VenueDetailsTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var cellImageView: UIImageView!
-    @IBOutlet weak var cellTitleLabel: UILabel!
+    @IBOutlet private weak var cellImageView: UIImageView!
+    @IBOutlet private weak var cellTitleLabel: UILabel!
 
     func config(model: VenueDetailsCellModel) {
         cellTitleLabel.text = model.info

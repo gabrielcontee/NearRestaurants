@@ -42,7 +42,7 @@
 		DECC1571256AB2300073512F /* VenueDetailsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC1570256AB2300073512F /* VenueDetailsCellModel.swift */; };
 		DECC157A256ABC530073512F /* VenueDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC1578256ABC530073512F /* VenueDetailsTableViewCell.swift */; };
 		DECC157B256ABC530073512F /* VenueDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECC1579256ABC530073512F /* VenueDetailsTableViewCell.xib */; };
-		DECC1584256AE58A0073512F /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC1583256AE5890073512F /* UIViewControllerExtension.swift */; };
+		DECC1584256AE58A0073512F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC1583256AE5890073512F /* UIViewController+Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,7 +104,7 @@
 		DECC1570256AB2300073512F /* VenueDetailsCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueDetailsCellModel.swift; sourceTree = "<group>"; };
 		DECC1578256ABC530073512F /* VenueDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		DECC1579256ABC530073512F /* VenueDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VenueDetailsTableViewCell.xib; sourceTree = "<group>"; };
-		DECC1583256AE5890073512F /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		DECC1583256AE5890073512F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,7 +296,7 @@
 		DECC1582256AE5740073512F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DECC1583256AE5890073512F /* UIViewControllerExtension.swift */,
+				DECC1583256AE5890073512F /* UIViewController+Alert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -443,7 +443,7 @@
 				DECC15312569805D0073512F /* RestaurantsMapInteractor.swift in Sources */,
 				DECC153F256982130073512F /* BaseViewController.swift in Sources */,
 				DECC14EF2569536D0073512F /* RestaurantLocation.swift in Sources */,
-				DECC1584256AE58A0073512F /* UIViewControllerExtension.swift in Sources */,
+				DECC1584256AE58A0073512F /* UIViewController+Alert.swift in Sources */,
 				DECC151625695F680073512F /* Keys.swift in Sources */,
 				DECC14FD256955960073512F /* FoursquareVenue.swift in Sources */,
 				DECC14F52569557A0073512F /* FoursquareLocation.swift in Sources */,

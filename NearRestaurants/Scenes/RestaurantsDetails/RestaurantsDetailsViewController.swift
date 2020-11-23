@@ -20,7 +20,7 @@ class RestaurantsDetailsViewController: BaseViewController, RestaurantsDetailsDi
     
     var venuesInfoList: [VenueDetailsCellModel] = []
     
-    @IBOutlet weak var venueInfoTableView: UITableView!
+    @IBOutlet private weak var venueInfoTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
