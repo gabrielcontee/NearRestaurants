@@ -33,8 +33,9 @@ class RestaurantsMapInteractor: RestaurantsMapBusinessLogic, RestaurantsMapDataS
                 guard let self = self else { return }
                 switch result {
                 case .success(let venues):
+                    let newVenues = self.getOnlyNewVenues(venues)
                     self.foodVenues = venues
-                    let response = RestaurantsMap.Venues.Response(restaurants: venues)
+                    let response = RestaurantsMap.Venues.Response(restaurants: newVenues)
                     self.presenter?.presentRestaurants(response: response)
                 case .failure(let error):
                     let response = RestaurantsMap.Venues.Response(restaurants: [], errorMessage: error)
@@ -55,8 +56,20 @@ class RestaurantsMapInteractor: RestaurantsMapBusinessLogic, RestaurantsMapDataS
         presenter?.presentDetails(response: response)
     }
     
+    private func getOnlyNewVenues(_ venues: [FoursquareVenue]) -> [FoursquareVenue] {
+        if foodVenues == [] {
+            return venues
+        } else {
+            let currentVenuesSet: Set<FoursquareVenue> = Set(foodVenues)
+            var fetchedVenuesSet = Set(venues)
+            fetchedVenuesSet.subtract(currentVenuesSet)
+            let venuesDiff = Array(fetchedVenuesSet)
+            return venuesDiff
+        }
+    }
+    
     private func isFetchNeeded(for coordinate: FoursquareCoordinate) -> Bool {
-        let threshold: Double = 0.003
+        let threshold: Double = 0.02
         guard let lastLatitude = lastCoordinateFetched?.latitude, let lastLongitude = lastCoordinateFetched?.longitude else {
             lastCoordinateFetched = FoursquareCoordinate(latitude: coordinate.latitude, longitude: coordinate.longitude)
             return true

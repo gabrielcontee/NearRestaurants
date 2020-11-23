@@ -88,7 +88,7 @@ extension RestaurantsMapViewController: MKMapViewDelegate {
     }
     
     func setMapRegion(latitude: Double, longitude: Double) {
-        let zoomRange = 0.025
+        let zoomRange = 0.02
         let coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let span = MKCoordinateSpan(latitudeDelta: zoomRange, longitudeDelta: zoomRange)
         var region = MKCoordinateRegion(center: coordinates, span: span)
