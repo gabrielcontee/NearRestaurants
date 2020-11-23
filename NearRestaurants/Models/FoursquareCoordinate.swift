@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FoursquareCoordinate: CustomStringConvertible, Hashable {
+struct FoursquareCoordinate: CustomStringConvertible {
     let latitude: Double
     let longitude: Double
     

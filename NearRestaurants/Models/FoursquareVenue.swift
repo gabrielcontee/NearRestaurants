@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FoursquareVenue: Hashable {
+struct FoursquareVenue {
     
     let id: String
     let name: String

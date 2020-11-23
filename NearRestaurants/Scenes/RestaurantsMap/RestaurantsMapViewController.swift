@@ -60,8 +60,12 @@ class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLog
 
 extension RestaurantsMapViewController: MKMapViewDelegate {
     
-    func addMapAnnotations(for venues: [FoursquareVenue]) {
+    fileprivate func extractedFunc() {
         removeMapAnnotations()
+    }
+    
+    func addMapAnnotations(for venues: [FoursquareVenue]) {
+        extractedFunc()
         
         let annotations: [MKPointAnnotation] = venues.map { venue in
             let point = MKPointAnnotation()
