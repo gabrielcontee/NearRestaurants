@@ -24,18 +24,22 @@ class RestaurantsMapInteractor: RestaurantsMapBusinessLogic, RestaurantsMapDataS
     var foodVenues: [FoursquareVenue] = []
     var chosenVenue: FoursquareVenue?
     
+    var lastCoordinateFetched: FoursquareCoordinate?
+    
     func fetchRestaurants(request: RestaurantsMap.Venues.Request) {
         let coordinate = FoursquareCoordinate(latitude: request.latitude, longitude: request.longitude)
-        self.worker?.fetchCloseRestaurants(for: coordinate, category: .food) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let venues):
-                self.foodVenues = venues
-                let response = RestaurantsMap.Venues.Response(restaurants: venues)
-                self.presenter?.presentRestaurants(response: response)
-            case .failure(let error):
-                let response = RestaurantsMap.Venues.Response(restaurants: [], errorMessage: error)
-                self.presenter?.presentError(response: response)
+        if isFetchNeeded(for: coordinate) {
+            self.worker?.fetchCloseRestaurants(for: coordinate, category: .food) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let venues):
+                    self.foodVenues = venues
+                    let response = RestaurantsMap.Venues.Response(restaurants: venues)
+                    self.presenter?.presentRestaurants(response: response)
+                case .failure(let error):
+                    let response = RestaurantsMap.Venues.Response(restaurants: [], errorMessage: error)
+                    self.presenter?.presentError(response: response)
+                }
             }
         }
     }
@@ -49,5 +53,18 @@ class RestaurantsMapInteractor: RestaurantsMapBusinessLogic, RestaurantsMapDataS
         chosenVenue = venueInfo
         let response = RestaurantsMap.GetVenueDetail.Response(venueInfo: venueInfo)
         presenter?.presentDetails(response: response)
+    }
+    
+    private func isFetchNeeded(for coordinate: FoursquareCoordinate) -> Bool {
+        let threshold: Double = 0.003
+        guard let lastLatitude = lastCoordinateFetched?.latitude, let lastLongitude = lastCoordinateFetched?.longitude else {
+            lastCoordinateFetched = FoursquareCoordinate(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            return true
+        }
+        if (abs(coordinate.latitude) - abs(lastLatitude)) > threshold || (abs(coordinate.longitude) - abs(lastLongitude)) > threshold {
+            lastCoordinateFetched = FoursquareCoordinate(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            return true
+        }
+        return false
     }
 }
