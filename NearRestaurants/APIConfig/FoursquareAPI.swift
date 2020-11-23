@@ -42,7 +42,7 @@ enum FoursquareAPI: BaseRequestEndpoint {
         fileprivate struct DefaultValues {
             static let version = "20160301"
             static let limit = "50"
-            static let searchRadius = "3000"
+            static let searchRadius = "750"
         }
         
         var parameters: [String : AnyObject] {
