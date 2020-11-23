@@ -12,6 +12,7 @@
 		DE386F30256B57210085668A /* RestaurantsMapWorkerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE386F2F256B57210085668A /* RestaurantsMapWorkerSpy.swift */; };
 		DE386F36256B57720085668A /* VenuesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE386F35256B57720085668A /* VenuesMock.swift */; };
 		DE386F3E256B58470085668A /* LocationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE386F3D256B58470085668A /* LocationMock.swift */; };
+		DE386F48256B5CD60085668A /* UIImageView+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE386F47256B5CD60085668A /* UIImageView+Color.swift */; };
 		DECC145F2569480B0073512F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC145E2569480B0073512F /* AppDelegate.swift */; };
 		DECC14612569480B0073512F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC14602569480B0073512F /* SceneDelegate.swift */; };
 		DECC14682569480E0073512F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DECC14672569480E0073512F /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		DE386F2F256B57210085668A /* RestaurantsMapWorkerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsMapWorkerSpy.swift; sourceTree = "<group>"; };
 		DE386F35256B57720085668A /* VenuesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesMock.swift; sourceTree = "<group>"; };
 		DE386F3D256B58470085668A /* LocationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMock.swift; sourceTree = "<group>"; };
+		DE386F47256B5CD60085668A /* UIImageView+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Color.swift"; sourceTree = "<group>"; };
 		DECC145B2569480B0073512F /* NearRestaurants.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearRestaurants.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DECC145E2569480B0073512F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DECC14602569480B0073512F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				DECC1583256AE5890073512F /* UIViewController+Alert.swift */,
+				DE386F47256B5CD60085668A /* UIImageView+Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				DECC156B256AAFA70073512F /* RestaurantsDetailsModels.swift in Sources */,
 				DECC1552256A93CC0073512F /* RestaurantsDetailsConfigurator.swift in Sources */,
 				DECC157A256ABC530073512F /* VenueDetailsTableViewCell.swift in Sources */,
+				DE386F48256B5CD60085668A /* UIImageView+Color.swift in Sources */,
 				DECC149925694D850073512F /* RestaurantsMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

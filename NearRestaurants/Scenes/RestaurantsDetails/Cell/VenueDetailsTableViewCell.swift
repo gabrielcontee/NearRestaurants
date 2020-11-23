@@ -15,5 +15,8 @@ class VenueDetailsTableViewCell: UITableViewCell {
     func config(model: VenueDetailsCellModel) {
         cellTitleLabel.text = model.info
         cellImageView.image = UIImage(named: model.imageName) ?? UIImage()
+        if self.traitCollection.userInterfaceStyle == .dark {
+            cellImageView.setImageColor(color: .white)
+        }
     }
 }
