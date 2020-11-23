@@ -19,14 +19,14 @@ class LocationManager: NSObject {
     }
     
     private func setup() {
-        self.locationManager.delegate = self
+        locationManager.delegate = self
         requestLocationAuth()
     }
     
     func requestLocationAuth() {
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        self.locationManager.requestLocation()
+        locationManager.requestLocation()
     }
 }
 
@@ -34,8 +34,8 @@ extension LocationManager: CLLocationManagerDelegate {
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         let status = manager.authorizationStatus
-        if(status == .authorizedWhenInUse || status == .authorizedAlways){
-            locationManager.startUpdatingLocation()
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+            self.locationManager.startUpdatingLocation()
         }else{
             requestLocationAuth()
         }

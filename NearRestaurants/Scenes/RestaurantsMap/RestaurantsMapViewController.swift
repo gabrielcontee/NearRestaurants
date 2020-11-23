@@ -16,7 +16,7 @@ protocol RestaurantsMapDisplayLogic {
 
 class RestaurantsMapViewController: BaseViewController, RestaurantsMapDisplayLogic {
     
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet private weak var mapView: MKMapView!
     
     var interactor: RestaurantsMapBusinessLogic?
     var router: (RestaurantsMapRoutingLogic & RestaurantsMapDataPassing)?

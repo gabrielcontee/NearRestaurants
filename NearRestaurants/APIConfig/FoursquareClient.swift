@@ -9,7 +9,7 @@ import Foundation
 
 final class FoursquareClient: APIClient {
     
-    var appErrorDomain: String = "gabrielcontee.NearRestaurants.NetworkingError"
+    let appErrorDomain: String = "gabrielcontee.NearRestaurants.NetworkingError"
     
     let configuration: URLSessionConfiguration
     
