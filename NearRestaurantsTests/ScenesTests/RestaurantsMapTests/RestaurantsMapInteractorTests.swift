@@ -54,6 +54,7 @@ class RestaurantsMapInteractorTests: XCTestCase {
         sut.fetchRestaurants(request: request)
         
         // Then
+        // Ps: Could do it with XCTestExpectation, but in this simple case is not needed
         XCTAssertEqual(sut.foodVenues.count, 2)
         XCTAssertEqual(sut.foodVenues[0].name, "Bobs")
         XCTAssertEqual(sut.foodVenues[1].name, "Jennys")
