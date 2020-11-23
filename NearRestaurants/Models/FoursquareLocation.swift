@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FoursquareLocation: Hashable {
+struct FoursquareLocation {
     let coordinate: FoursquareCoordinate?
     let distance: Double?
     let countryCode: String?
